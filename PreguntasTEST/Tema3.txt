@@ -1,0 +1,17 @@
+1. En la configuración sin DMZ...
+a) Todos los equipos están conectados a la misma subred.
+b) Se comparte todos los recursos de la red.
+c) Ésta configuración está pensada para empresas pequeñas.
++d) Todas las anteriores son ciertas. 
+
+2. En una buena configuración de red de un servidor..
+a) Normalmente los equipos que sirven HTTP, SMTP, POP3... tienen una configuración Multi-Nic.
+b) Normalmente los equipos que sirven Bases de datos tienen una configuración Single-Nic.
+c) Todos los equipos tienen una configuración Multi-Nic.
++d) La opción a y b son correctoas. 
+
+3. ¿Cual es la configuración más optima si se quiere implementar NAT en una granja?
+a) Repartir la carga con el balanceador a varios firewalls y que éstos pasen el tráfico filtrado a los equipos de la granja.
+b) Tener varios firewalls con NAT activado para que cada uno de ellos traduzca las peticiones a un equipo de la granja.
++c) Filtrar el tráfico entrante desde internet con un firewall, pasar el tráfico filtrado al balanceador y que éste distribuya la carga entre los equipos con direcciones de red privadas. <- Correcta
+d) Ninguna de las anteriores es correcta.
