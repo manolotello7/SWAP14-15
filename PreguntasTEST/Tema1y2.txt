@@ -1,0 +1,24 @@
+1. ¿Con qué disponibilidad se conforman con alcanzar los sitios web?
+a) 90%
+b) 99,99% "Correcta"
+c) 99%
+d) 95%
+
+2. El uso de subsistemas redundantes y monitorizarlos:
+a) Obtendremos una pequeñísima mejora de la disponibilidad.
+b) La disponibilidad será la misma.
+c) Obtendremos una notable mejora de la disponibilidad. "Correcta"
+d) Empeorará la disponibilidad.
+
+3. ¿Cuál de estos escalados corresponde a una ampliación vertical?
+a) Incremento de RAM. "Correcta"
+b) Añadir un servidor web a algún subsitema.
+c) Añadir un servidor de datos a algún subsitema.
+c) Todos corresponden a una ampliación vertical.
+
+4. ¿Qué deberemos tener en cuenta en la planificación de un sitio web?
+a) Siempre habrá puntos débiles.
+b) El tipo de red es fundamental (ancho de banda).
+c) La seguridad es muy importante.
+d) Todas las anteriores son correctas. "Correcta"
+
