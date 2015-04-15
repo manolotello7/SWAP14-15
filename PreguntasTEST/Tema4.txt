@@ -1,0 +1,20 @@
+1. Con respecto al mantenimiento, los balanceadores de carga:
+a) Son independientes del sistema operativo que haya en las máquinas servidoras.
+b) Dependen del sistema operativo que hay en las máquinas servidores.
+c) Dependen y mucho, porque tienen que conocer el sistema operativo de las máquinas servidoras para balancear correctamente la carga.
+d) Todas las anteriores son correctas.
+Respuesta Correcta: A
+
+2. ¿Cuál de los siguientes algoritmos NO es un algoritmo de balanceo de carga?
+a) Algoritmo basado en ponderación.
+b) Combinación de los algoritmos de tiempo de respuesta y menor número de conexiones.
+c) Algoritmo basado en tiempo de respuesta.
+d) Algoritmo de Backtracking (Vuelta atrás).
+Respuesta Correcta: D
+
+3. Si las máquinas son heterogéneas y vamos a servir contenido dinámico, ¿Cuál sería el algoritmo de balanceo de carga adecuado para ser usado en este caso?
+a) Algoritmo basado en tiempo de respuesta.
+b) Algoritmo basado en prioridad.
+c) Combinación de algoritmos de menor número de conexiones y de tiempo de respuesta.
+d) Algoritmo basado en ponderación.
+Respuesta Correcta: D
