@@ -1,0 +1,15 @@
+1. A la hora de medir prestaciones: 
+a) El número de conexiones que es capaz de abrir un servidor es muy importante.
+b) El número de conexiones no es importante.
+c) Abrir y cerrar conexiones HTTP no es costoso.
+d) La red no se tiene en cuenta.
+Respuesta correcta es: A.
+
+2. El número de conexiones concurrentes: 
+a) Determina cuántas sesiones de usuario TCP puede manejar el balanceador al mismo tiempo y esta limitado por la memoria o el procesador del dispositivo.
+b) No esta limitado.
+c) Para el tráfico UDP no afecta ya que se trata de un protocolo sin conexión.
+d) Las respuestas 1 y 3 son correctas.
+Respuesta correcta es: D.
+
+

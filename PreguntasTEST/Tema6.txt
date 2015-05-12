@@ -1,0 +1,13 @@
+1. Cuando hablamos de seguridad a nivel físico,¿a qué nos referímos?:
+a) Seguridad de aplicación
+b) Seguridad de acceso
+c) Seguridad del sistema
+d) Seguridad del hardware
+Respuesta correcta es: D.
+
+4. En un servidor web podemos deshabilitar servicios como:
+a) FTP y SMTP
+b) TCP/IP
+c) IP
+d) HTTP
+Respuesta correcta es: A.
