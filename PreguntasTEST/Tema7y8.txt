@@ -1,0 +1,27 @@
+1. RAID (redundant array of independent disks):
+a) Ofrece mayor integridad, mayor tolerancia a fallos, mayor capacidad, pero ofrece menor rendimiento.
+b) Ofrece mayor integridad, mayor capacidad, mayor rendimiento, pero es menos tolerante a fallos.
+c) Ofrece mayor integridad, mayor tolerancia a fallos, mayor rendimiento y mayor capacidad.
+d) Ofrece solo mayor integridad.
+Respuesta correcta: C
+
+2. Un RAID (redundant array of independent disks) por hardware es mucho más rápido que uno configurado por software:
+a) Depende de la configuración.
+b) Si
+c) No
+d) b y c son ciertas.
+Respuesta correcta: B
+
+3. ¿Qué puede hacer RAID?
+a) Puede mejorar el rendimiento de ciertas aplicaciones.
+b) Protege los datos.
+c) Permite acceder a los datos aunque falle un disco.
+d) a y c son correctas.
+Respuesta correcta: D
+
+Para estimar las necesidades de CPU:
+a) El sistema operativo debe consumir cerca del 2% de la capacidad de procesamiento del sistema.
+b) El sistema operativo debe consumir cerca del 10% de la capacidad de procesamiento del sistema.
+c) El sistema operativo debe consumir cerca del 30% de la capacidad de procesamiento del sistema.
+d) El sistema operativo debe consumir cerca del 35% de la capacidad de procesamiento del sistema.
+Respuesta correcta: B
