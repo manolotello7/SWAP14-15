@@ -1,6 +1,6 @@
 # CREAR UN TAR CON FICHEROS LOCALES EN UN EQUIPO
 
-* En primer lugar, crearé un archivo llamado prueba en la primera máquina virtual. Para ello, ejecutaré el comando “touch prueba”.
+* En primer lugar, crearé un archivo llamado prueba en la primera máquina virtual. Para ello, ejecutaré el comando **touch prueba**.
 
 * Una vez creado el archivo, ejecutaremos: **tar czf - prueba | ssh equipodestino 'cat > ~/tar.tgz'** . Cuando lo ejecute, me pedirá la contraseña de la máquina virtual correspondiente a la Ip a través de la cual me conecto, en este caso, a la segunda máquina que tenemos creada.
 
@@ -15,9 +15,7 @@
 
 * Instalamos la herramienta "rsync" ejecutando **sudo apt-get install rsync**
 
-* Una vez que hemos instalado dicha herramienta, vamos a proceder a ejecutarla. Ahora, podemos probar el funcionamiento, clonando una carpeta cualquiera, por ejemplo, la carpeta con el contenido del servidor web. En la máquina 2 (secundaria) ejecutaremos:
-
-rsync -avz -e ssh root@maquina1:/var/www/ /var/www/
+* Una vez que hemos instalado dicha herramienta, vamos a proceder a ejecutarla. Ahora, podemos probar el funcionamiento, clonando una carpeta cualquiera, por ejemplo, la carpeta con el contenido del servidor web. En la máquina 2 (secundaria) ejecutaremos:                        **rsync -avz -e ssh root@maquina1:/var/www/ /var/www/**
 
 * Y comprobamos que el directorio /var/www/html/ se ha clonado correctamente con **´ls -la /var/www/html/**
 
