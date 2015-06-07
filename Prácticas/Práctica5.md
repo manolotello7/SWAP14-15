@@ -42,11 +42,11 @@ Esto puede ser suficiente, pero tenemos que tener en cuenta que los datos pueden
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/7-maquina1.png)
 
 * Como habíamos bloqueado las tablas, debemos desbloquearlas (quitar el “LOCK”):
-'''
+```
 **mysql -u root –p**
 **UNLOCK TABLES;**
 **quit**
-'''
+```
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/8-maquina1.png)
 
