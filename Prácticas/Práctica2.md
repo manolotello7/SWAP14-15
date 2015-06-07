@@ -1,3 +1,5 @@
+## Práctica 2-Clonar la información de un sitio web
+
 # CREAR UN TAR CON FICHEROS LOCALES EN UN EQUIPO
 
 * En primer lugar, crearé un archivo llamado prueba en la primera máquina virtual. Para ello, ejecutaré el comando **touch prueba**.
