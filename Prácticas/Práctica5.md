@@ -56,8 +56,8 @@ Esto puede ser suficiente, pero tenemos que tener en cuenta que los datos pueden
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/1-maquina2.png)
 
 * Es importante destacar que el archivo .SQL de copia de seguridad tiene formato de texto plano, e incluye las sentencias SQL para restaurar los datos contenidos en la BD en otra máquina. Sin embargo, la orden mysqldump no incluye en ese archivo la sentencia para crear la BD (es necesario que nosotros la creemos en la máquina secundaria en un primer paso, antes de restaurar las tablas de esa BD y los datos contenidos en éstas). Con el archivo de copia de seguridad en el esclavo ya podemos importar la BD completa en el MySQL. Para ello, en un primer paso creamos la BD: 
-**mysql -u root –p**
-**CREATE DATABASE ejemplodb;**
+**mysql -u root –p**  
+**CREATE DATABASE ejemplodb;** 
 **quit**
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/2-maquina2.png)
