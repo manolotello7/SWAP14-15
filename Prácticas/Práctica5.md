@@ -31,39 +31,39 @@
 ## Replicar una BD MySQL con mysqldump
 
 * La sintaxis de uso es: 
-	**mysqldump ejemplodb -u root -p > /root/ejemplodb.sql**
+**mysqldump ejemplodb -u root -p > /root/ejemplodb.sql**
 Esto puede ser suficiente, pero tenemos que tener en cuenta que los datos pueden estar actualizándose constantemente en el servidor de BD principal. En este caso, antes de hacer la copia de seguridad en el archivo .SQL debemos evitar que se acceda a la BD para cambiar nada. Así, en el servidor de BD principal (maquina1) hacemos: **mysql -u root –p** y despues ponemos: **FLUSH TABLES WITH READ LOCK;**
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/6-maquina1.png)
 
 * Ahora ya sí podemos hacer el **mysqldump** para guardar los datos. En el servidor principal (maquina1) hacemos: 
-	**mysqldump contactos -u root -p > /root/contactos.sql**
+**mysqldump contactos -u root -p > /root/contactos.sql**
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/7-maquina1.png)
 
 * Como habíamos bloqueado las tablas, debemos desbloquearlas (quitar el “LOCK”):
-	**mysql -u root –p**
-	**UNLOCK TABLES;**
-	**quit**
+**mysql -u root –p**
+**UNLOCK TABLES;**
+**quit**
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/8-maquina1.png)
 
-- *AHORA EN LA SEGUNDA MÁQUINA*
+## AHORA EN LA SEGUNDA MÁQUINA
 
 * Ya podemos ir a la máquina esclavo (maquina2, secundaria) para copiar el archivo .SQL con todos los datos salvados desde la máquina principal (maquina1):
-	**scp root@maquina1:/root/contacot.sql /root/**
+**scp root@maquina1:/root/contacot.sql /root/**
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/1-maquina2.png)
 
 * Es importante destacar que el archivo .SQL de copia de seguridad tiene formato de texto plano, e incluye las sentencias SQL para restaurar los datos contenidos en la BD en otra máquina. Sin embargo, la orden mysqldump no incluye en ese archivo la sentencia para crear la BD (es necesario que nosotros la creemos en la máquina secundaria en un primer paso, antes de restaurar las tablas de esa BD y los datos contenidos en éstas). Con el archivo de copia de seguridad en el esclavo ya podemos importar la BD completa en el MySQL. Para ello, en un primer paso creamos la BD: 
-	**mysql -u root –p**
-	**CREATE DATABASE ejemplodb;**
-	**quit**
+**mysql -u root –p**
+**CREATE DATABASE ejemplodb;**
+**quit**
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/2-maquina2.png)
 
 * Y en un segundo paso restauramos los datos contenidos en la BD (se crearán las tablas en el proceso): 
-	**mysql -u root -p ejemplodb < /root/contactos.sql**
+**mysql -u root -p ejemplodb < /root/contactos.sql**
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/3-maquina2.png)
 
@@ -76,20 +76,20 @@ Esto puede ser suficiente, pero tenemos que tener en cuenta que los datos pueden
 * La opción anterior funciona perfectamente, pero es algo que realiza un operador a mano. MySQL tiene la opción de configurar el demonio para hacer replicación de las BD sobre un esclavo a partir de los datos que almacena el maestro. Se trata de un proceso automático que resulta muy adecuado en un entorno de producción real. Implica realizar algunas configuraciones, tanto en el servidor principal como en el secundario. En las siguientes URLs se detallan estas configuraciones:
 
 * Lo primero que debemos hacer es la configuración de mysql del maestro. Para ello editamos, como root, el /etc/mysql/my.cnf para realizar las modificaciones que se describen a continuación. Comentamos el parámetro bind-address que sirve para que escuche a un servidor: **bind- address 127.0.0.1** y le añadimos:
-	**log_bin = /var/log/mysql/mysql-bin.log**
-	**log_error= /var/log/mysql/error.log**
-	**server-id=1**
+**log_bin = /var/log/mysql/mysql-bin.log**
+**log_error= /var/log/mysql/error.log**
+**server-id=1**
 
 * Y lo guardamos y lo reiniciamos con **sudo /etc/ini.d/mysql restart**
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/bd3-maquina1.png)
 
 * En siguiente lugar, vamos a proceder a crear el usuario. Para ello, ejecutaremos los siguientes comandos (dentro de mysql):
-	**CREATE USER esclavo IDENTIFIED BY 'slave_user';**
-	**GRANT REPLICATION SLAVE ON *.* TO 'slave_user'@'%' IDENTIFIED BY 'usuario';**
-	**FLUSH PRIVILEGES;**
-	**FLUSH TABLES;**
-	**FLUSH TABLES WITH READ LOCK;**
+**CREATE USER esclavo IDENTIFIED BY 'slave_user';**
+**GRANT REPLICATION SLAVE ON *.* TO 'slave_user'@'%' IDENTIFIED BY 'usuario';**
+**FLUSH PRIVILEGES;**
+**FLUSH TABLES;**
+**FLUSH TABLES WITH READ LOCK;**
 
 * Para finalizar con la configuración en el maestro obtenemos los datos de la base de datos que vamos a replicar para posteriormente usarlos en la configuración del esclavo: **SHOW MASTER STATUS;**
 
