@@ -1,6 +1,6 @@
-## Práctica 2-Clonar la información de un sitio web
+# Práctica 2-Clonar la información de un sitio web
 
-# CREAR UN TAR CON FICHEROS LOCALES EN UN EQUIPO
+## CREAR UN TAR CON FICHEROS LOCALES EN UN EQUIPO
 
 * En primer lugar, crearé un archivo llamado prueba en la primera máquina virtual. Para ello, ejecutaré el comando **touch prueba**.
 
@@ -13,7 +13,7 @@
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica2/tar2.jpg)
 
 
-# INSTALAR LA HERRAMIENTA RSYNC
+## INSTALAR LA HERRAMIENTA RSYNC
 
 * Instalamos la herramienta "rsync" ejecutando **sudo apt-get install rsync**
 
@@ -23,7 +23,7 @@
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica2/clonado-maquina2.jpg)
 
-# ACCESO SIN CONTRASEÑA PARA SSH
+## ACCESO SIN CONTRASEÑA PARA SSH
 
 Los pasos que seguiremos para acceder a “ssh” sin necesidad de introducir la contraseña serán los siguientes:
 
@@ -39,7 +39,7 @@ Los pasos que seguiremos para acceder a “ssh” sin necesidad de introducir la
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica2/ssh2-maquina2.jpg)
 
-# PROGRAMAR TAREAS CON CRONTAB
+## PROGRAMAR TAREAS CON CRONTAB
 
 * Por último, nos quedará programar una tarea con “crontab”. La tarea que vamos a programar es la de actualizar el directorio “/var/www” de nuestra máquina 2, copiando la de la máquina 1. Para ello, lo único que tendremos que hacer es ir al fichero “/etc/crontab” de la máquina 2, tal y como se observa en la imagen.
 
