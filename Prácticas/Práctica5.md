@@ -4,8 +4,8 @@
 
 * En primer lugar, en la máquina 1 que será la principal, usamos el comando **mysql –u root -p**, y pulsamos "enter", y ya estaremos dentro de mysql.
 
-* Una vez dentro, crearemos la base de datos de contactos: **create database contactos;** .
-* Cuando este creada, debemos seleccionar la base de datos creada para, ello hacemos **use contactos;** .
+* Una vez dentro, crearemos la base de datos de contactos: **create database contactos;**
+* Cuando este creada, debemos seleccionar la base de datos creada para, ello hacemos **use contactos;**
 * Hacemos un **show tables** para mostrar las tablas, pero como solo hemos creado la base de datos no habrá ninguna tabla aún.
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/1-maquina1.png)
@@ -18,7 +18,7 @@
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/3-maquina1.png)
 
-* Ahora haremos que nos muestre todo lo que contenga: **select * from datos** .
+* Ahora haremos que nos muestre todo lo que contenga: **select * from datos**
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/4-maquina1.png)
 
@@ -26,25 +26,27 @@
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/5-maquina1.png)
 
-* Salimos de mysql con: **quit** .
+* Salimos de mysql con: **quit**
 
 ## Replicar una BD MySQL con mysqldump
 
 * La sintaxis de uso es: 
-**mysqldump ejemplodb -u root -p > /root/ejemplodb.sql** .
-Esto puede ser suficiente, pero tenemos que tener en cuenta que los datos pueden estar actualizándose constantemente en el servidor de BD principal. En este caso, antes de hacer la copia de seguridad en el archivo .SQL debemos evitar que se acceda a la BD para cambiar nada. Así, en el servidor de BD principal (maquina1) hacemos: **mysql -u root –p** y despues ponemos: **FLUSH TABLES WITH READ LOCK;** .
+**mysqldump ejemplodb -u root -p > /root/ejemplodb.sql** . 
+Esto puede ser suficiente, pero tenemos que tener en cuenta que los datos pueden estar actualizándose constantemente en el servidor de BD principal. En este caso, antes de hacer la copia de seguridad en el archivo .SQL debemos evitar que se acceda a la BD para cambiar nada. Así, en el servidor de BD principal (maquina1) hacemos: **mysql -u root –p** y despues ponemos: **FLUSH TABLES WITH READ LOCK;**
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/6-maquina1.png)
 
-* Ahora ya sí podemos hacer el **mysqldump** para guardar los datos. En el servidor principal (maquina1) hacemos: .
-	**mysqldump contactos -u root -p > /root/contactos.sql** .
+* Ahora ya sí podemos hacer el **mysqldump** para guardar los datos. En el servidor principal (maquina1) hacemos: 
+**mysqldump contactos -u root -p > /root/contactos.sql**
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/7-maquina1.png)
 
-* Como habíamos bloqueado las tablas, debemos desbloquearlas (quitar el “LOCK”): .
-	**mysql -u root –p** .
-	**UNLOCK TABLES;** .
-	**quit** .
+* Como habíamos bloqueado las tablas, debemos desbloquearlas (quitar el “LOCK”):
+'''
+**mysql -u root –p**
+**UNLOCK TABLES;**
+**quit**
+'''
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/8-maquina1.png)
 
