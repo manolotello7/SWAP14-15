@@ -84,7 +84,8 @@ Esto puede ser suficiente, pero tenemos que tener en cuenta que los datos pueden
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/bd3-maquina1.png)
 
-* En siguiente lugar, vamos a proceder a crear el usuario. Para ello, ejecutaremos los siguientes comandos (dentro de mysql):             		**CREATE USER esclavo IDENTIFIED BY 'slave_user';**
+* En siguiente lugar, vamos a proceder a crear el usuario. Para ello, ejecutaremos los siguientes comandos (dentro de mysql):
+	**CREATE USER esclavo IDENTIFIED BY 'slave_user';**
 	**GRANT REPLICATION SLAVE ON *.* TO 'slave_user'@'%' IDENTIFIED BY 'usuario';**
 	**FLUSH PRIVILEGES;**
 	**FLUSH TABLES;**
