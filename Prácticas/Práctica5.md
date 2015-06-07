@@ -59,9 +59,9 @@ quit
 
 * Es importante destacar que el archivo .SQL de copia de seguridad tiene formato de texto plano, e incluye las sentencias SQL para restaurar los datos contenidos en la BD en otra máquina. Sin embargo, la orden mysqldump no incluye en ese archivo la sentencia para crear la BD (es necesario que nosotros la creemos en la máquina secundaria en un primer paso, antes de restaurar las tablas de esa BD y los datos contenidos en éstas). Con el archivo de copia de seguridad en el esclavo ya podemos importar la BD completa en el MySQL. Para ello, en un primer paso creamos la BD: 
 ```
-**mysql -u root –p**
-**CREATE DATABAS ejemplodb;**
-**quit**
+mysql -u root –p
+CREATE DATABAS ejemplodb;
+quit
 ```
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/2-maquina2.png)
@@ -81,9 +81,9 @@ quit
 
 * Lo primero que debemos hacer es la configuración de mysql del maestro. Para ello editamos, como root, el /etc/mysql/my.cnf para realizar las modificaciones que se describen a continuación. Comentamos el parámetro bind-address que sirve para que escuche a un servidor: **bind- address 127.0.0.1** y le añadimos:
 ```
-**log_bin = /var/log/mysql/mysql-bin.log**
-**log_error= /var/log/mysql/error.log**
-**server-id=1**
+log_bin = /var/log/mysql/mysql-bin.log
+log_error= /var/log/mysql/error.log
+server-id=1
 ```
 
 * Y lo guardamos y lo reiniciamos con **sudo /etc/ini.d/mysql restart**
@@ -92,11 +92,11 @@ quit
 
 * En siguiente lugar, vamos a proceder a crear el usuario. Para ello, ejecutaremos los siguientes comandos (dentro de mysql):
 ```
-**CREATE USER esclavo IDENTIFIED BY 'slave_user';**
-**GRANT REPLICATION SLAVE ON *.* TO 'slave_user'@'%' IDENTIFIED BY 'usuario';**
-**FLUSH PRIVILEGES;**
-**FLUSH TABLES;**
-**FLUSH TABLES WITH READ LOCK;**
+CREATE USER esclavo IDENTIFIED BY 'slave_user';
+GRANT REPLICATION SLAVE ON *.* TO 'slave_user'@'%' IDENTIFIED BY 'usuario';
+FLUSH PRIVILEGES;
+FLUSH TABLES;
+FLUSH TABLES WITH READ LOCK;
 ```
 
 * Para finalizar con la configuración en el maestro obtenemos los datos de la base de datos que vamos a replicar para posteriormente usarlos en la configuración del esclavo: **SHOW MASTER STATUS;**
@@ -105,7 +105,7 @@ quit
 
 * Volvemos a la máquina esclava, entramos en mysql y le damos los datos del maestro. Como indicábamos antes, estos datos se pueden introducir  directamente en el archivo de configuración si trabajamos con versiones inferiores a mysql 5.5. Si no es así, en el entorno de mysql ejecutamos la siguiente sentencia (ojo con la IP, "master_log_file" y del "master_log_pos" del maestro):
 ```
-**CHANGE MASTER TO MASTER_HOST='192.168.1.101', MASTER_USER='esclavo', MASTER_PASSWORD='esclavo', MASTER_LOG_FILE='bin.000001', MASTER_LOG_POS=501, MASTER_PORT=3306;**
+CHANGE MASTER TO MASTER_HOST='192.168.1.101', MASTER_USER='esclavo', MASTER_PASSWORD='esclavo', MASTER_LOG_FILE='bin.000001', MASTER_LOG_POS=501, MASTER_PORT=3306;
 ```
 
 ![img](https://github.com/manolotello7/SWAP14-15/blob/master/Im%C3%A1genes/Pr%C3%A1ctica5/bd2-maquina2.png)
